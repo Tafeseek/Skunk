@@ -11,6 +11,7 @@ public class SkunkApp
 	  
 	  System.out.print("Welcome to the Skunk Game \n");
 	  
+	  Turn turn = new Turn(playerOne,new RolleDie());
 	  while (!game.isOver())
 		{
 		  println(playerOne.getName()+ "'score is "+playerOne.getScore() + "\n");

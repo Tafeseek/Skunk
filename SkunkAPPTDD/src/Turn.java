@@ -1,11 +1,14 @@
 
 public class Turn
 {
+	
 	private Die die;
 	private int score=0;
+	private Player player;
 //	
-	public Turn(Die die)
+	public Turn(Player player,Die die)
 	{
+		this.player= player;
 	   this.die = die;
 	}
    
@@ -18,7 +21,14 @@ public class Turn
 	{
 		this.score = score;
 	}
-
+	
+	public Player getPlayer(){
+		return player;
+	}
+    public void end()
+   {
+	this.player.setScore(player.getScore()+this.score);
+   }
 
 	
 

@@ -7,14 +7,14 @@ public class PlayGame
     private Player currentPlayer;
     private Player winner;
 	public boolean isOver=false;
-	//private Turn turn;
+	private Turn turn;
     
 	public PlayGame(Player playerOne, Player playerTwo)
 	{
 		this.playerOne= playerOne;
 		this.playerTwo = playerTwo;
 		this.currentPlayer= playerOne;
-		//this.turn = new Turn(playerOne);
+		this.turn = new Turn(playerOne,new RolleDie());
 		
 	}
 	public Player CurrentPlayer()
