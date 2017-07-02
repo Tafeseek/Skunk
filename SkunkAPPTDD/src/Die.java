@@ -1,6 +1,17 @@
 
-public interface  Die
+public class  Die
 {
-	int roll();
+	private int faceValue;
+
+	public Die(int faceValue)
+	{
+		this.faceValue = faceValue;
+	}
+	
+	public int getFaceValue()
+	{
+		return faceValue;
+	}
+	
 	
 }

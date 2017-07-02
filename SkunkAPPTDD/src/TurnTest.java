@@ -9,22 +9,21 @@ import junit.framework.Assert;
 public class TurnTest
 {
 
-//	@BeforeClass
-//	public static void setUpBeforeClass() throws Exception
-//	{
-//	}
-//
-//	@Before
-//	public void setUp() throws Exception
-//	{
-//	}
-//
+
   @Test
-	public void getScore_startsAtZero()
+	public void testgetScore_startsAtZero()
 	{
-		Turn turn = new Turn();
+		Turn turn = new Turn(new Die(3));
 		
 		assertEquals(0,turn.getScore());
+	}
+  
+  @Test
+	public void testRoll_modifesScore()
+	{
+		Turn turn = new Turn(new Die(3));
+		turn.roll();
+		assertEquals(3,turn.getScore());
 	}
 
 }
