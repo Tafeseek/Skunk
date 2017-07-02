@@ -6,9 +6,12 @@ public class SkunkAppTDDTest
 {
 
 	@Test
-	public void test()
+	public void CurrentPlayGameTest()
 	{
-		fail("Not yet implemented");
+		Player player1 = new Player();
+		 Player player2 = new Player();
+		PlayGame game = new PlayGame( player1, player2);
+		assertEquals(player1, game.CurrentPlayer());
 	}
 
 }
