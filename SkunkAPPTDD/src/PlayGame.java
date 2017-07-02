@@ -36,6 +36,9 @@ public class PlayGame
      }
 	public Player getWinner()
 	{
+		if(!isOver)
+			throw new IllegalStateException("Game is not over");
+		else
 		return winner;
 	}
      
