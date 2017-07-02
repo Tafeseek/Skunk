@@ -13,11 +13,25 @@ public class SkunkApp
 	  
 	  while (!game.isOver())
 		{
-		  System.out.print("It is " + game.CurrentPlayer().getName() + "'s turn\n");
-		  System.out.print("Press enter to go on\n");
-		  inputValue.nextLine();
+		  println("It is " + game.CurrentPlayer().getName() + "'s turn\n");
+		  println("Press enter to roll, q to end turn");
+		  
+		  String line = inputValue.nextLine();
+		  if(line.startsWith("q"))
+		  {
+			  playerOne.setScore(100);
+		  }
+		 
 		  game.EndTurn();
 		   
 		}
+	  
+	  println("Game over! The winner is " + game.getWinner());
+	  	  
 }
+    private static void println(String s)
+    {
+    	System.out.print(s);
+    }
+    
 }

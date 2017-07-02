@@ -5,6 +5,7 @@ public class PlayGame
 	private Player playerOne;
     private Player playerTwo;
     private Player currentPlayer;
+    private Player winner;
 	public boolean isOver=false;
     
 	public PlayGame(Player playerOne, Player playerTwo)
@@ -22,6 +23,7 @@ public class PlayGame
 	{
 		if(this.currentPlayer.getScore()>=POINTS_TO_WIN)
 		{
+		this.winner= this.currentPlayer;
 		this.isOver=true;
 		}
        this.currentPlayer = this.currentPlayer.equals(playerOne)? playerTwo:playerOne;
@@ -32,6 +34,10 @@ public class PlayGame
      {
     	 return isOver;
      }
+	public Player getWinner()
+	{
+		return winner;
+	}
      
      
 }

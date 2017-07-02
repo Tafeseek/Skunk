@@ -45,6 +45,12 @@ public class SkunkAppTDDTest
    	 Assert.assertTrue(game.isOver);
    	 
     }
+	public void testGetWinner()
+	{
+		playerOne.setScore(100);
+	   	 game.EndTurn();
+	   	assertEquals(playerOne,game.getWinner());
+	}
 
 }
 
