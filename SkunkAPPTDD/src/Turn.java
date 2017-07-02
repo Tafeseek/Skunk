@@ -14,14 +14,11 @@ public class Turn
 	{
 		return score;
 	}
-
-	
-
-	public void roll()
+	public void setScore(int score)
 	{
-		score+=die.getFaceValue();
-		
+		this.score = score;
 	}
+
 
 	
 
