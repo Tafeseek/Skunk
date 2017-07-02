@@ -9,15 +9,17 @@ public class SkunkApp
 	  PlayGame game = new PlayGame(playerOne, playerTwo); 
 	  Scanner inputValue = new Scanner(System.in);
 	  
-	  System.out.print("Welcome to the Skunk Game");
+	  System.out.print("Welcome to the Skunk Game \n");
 	  
 	  while (!game.isOver())
 		{
+		  println(playerOne.getName()+ "'score is "+playerOne.getScore() + "\n");
+		  println(playerTwo.getName()+ "'score is "+playerTwo.getScore()+"\n");
 		  println("It is " + game.CurrentPlayer().getName() + "'s turn\n");
-		  println("Press enter to roll, q to end turn");
+		  println("Press enter to go");
 		  
 		  String line = inputValue.nextLine();
-		  if(line.startsWith("q"))
+		  if(line.startsWith("!"))
 		  {
 			  playerOne.setScore(100);
 		  }
@@ -26,7 +28,7 @@ public class SkunkApp
 		   
 		}
 	  
-	  println("Game over! The winner is " + game.getWinner());
+	  println("Game over! The winner is " + game.getWinner().getName());
 	  	  
 }
     private static void println(String s)
