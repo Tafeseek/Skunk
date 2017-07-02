@@ -12,8 +12,8 @@ public class SkunkAppTDDTest
 	@Before
 	public void setUp() 
 	{
-		 playerOne = new Player();
-		 playerTwo = new Player();
+		 playerOne = new Player("");
+		 playerTwo = new Player("");
 		 game = new PlayGame( playerOne, playerTwo);
 	}
 
