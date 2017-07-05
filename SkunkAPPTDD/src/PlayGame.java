@@ -2,6 +2,7 @@
 public class PlayGame
 {
     private static final int POINTS_TO_WIN = 100;
+    private static RollDie DIE = new RollDie();
 	private Player playerOne;
     private Player playerTwo;
     private Player currentPlayer;
@@ -14,21 +15,23 @@ public class PlayGame
 		this.playerOne= playerOne;
 		this.playerTwo = playerTwo;
 		this.currentPlayer= playerOne;
-		this.turn = new Turn(playerOne,new RolleDie());
+		this.turn = new Turn(playerOne,DIE);
 		
 	}
 	public Player CurrentPlayer()
 	{
-		return this.currentPlayer;
+		return turn.getPlayer();
 	}
 	public void EndTurn()
 	{
+		turn.end();
 		if(this.currentPlayer.getScore()>=POINTS_TO_WIN)
 		{
 		this.winner= this.currentPlayer;
 		this.isOver=true;
 		}
-       this.currentPlayer = this.currentPlayer.equals(playerOne)? playerTwo:playerOne;
+		
+		turn = new Turn(CurrentPlayer().equals(playerOne) ? playerTwo : playerOne,DIE);
 		
 	}
 	
@@ -42,6 +45,16 @@ public class PlayGame
 			throw new IllegalStateException("Game is not over");
 		else
 		return winner;
+	}
+	public void roll()
+	{
+		turn.roll();
+		
+	}
+	public Turn currentTurn()
+	{
+		
+		return turn;
 	}
      
      
