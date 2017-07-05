@@ -1,42 +1,55 @@
-
-public class Turn
+public final class Turn
 {
-	//private static final int SKUNK_ROLL = 1;
-	private Die die;
-	private int score  = 0;
+
+	private static final int SKUNK_ROLL = 1;
 	private Player player;
+	private Die die;
+	private int score = 0;
 	private boolean isOver = false;
-//	
-	public Turn(Player player,Die die)
+
+	public Turn(Player player, Die die)
 	{
-		this.player= player;
-	    this.die = die;
+		this.player = player;
+		this.die = die;
 	}
-	public void setScore(int score)
-	{
-		this.score = score;
-	}
-	public void roll()
-	{
-		score+= die.roll();
-	}
-	
+
 	public int getScore()
 	{
 		return score;
 	}
-	
-	
-	
-	
-	public Player getPlayer(){
+
+	public int roll()
+	{
+		int roll = die.roll();
+		if (roll == SKUNK_ROLL)
+		{
+			score = 0;
+			isOver = true;
+		} else
+		{
+			score += roll;
+		}
+		return roll;
+	}
+
+	void setScore(int score)
+	{
+		this.score = score;
+	}
+
+	public void end()
+	{
+		this.player.setScore(player.getScore() + this.score);
+		this.isOver = true;
+	}
+
+	public Player getPlayer()
+	{
 		return player;
 	}
-    public void end()
-   {
-	this.player.setScore(player.getScore() + this.score);
-   }
 
-	
-
+	public boolean isOver()
+	{
+		return isOver;
+	}
 }

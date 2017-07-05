@@ -2,58 +2,58 @@ import java.util.Scanner;
 
 public class SkunkApp
 {
-	private static Player playerOne;
-	private static Player playerTwo;
+	private static Player playerOne = new Player("TAFESSE");
+	private static Player playerTwo = new Player("ASHENAFI");
+	private static PlayGame game = new PlayGame(playerOne, playerTwo);
+	private static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args)
 	{
-		playerOne = new Player("Tafesse");
-		playerTwo = new Player("Ashenafi");
-		PlayGame game = new PlayGame(playerOne, playerTwo);
-		Scanner inputValue = new Scanner(System.in);
 
-		System.out.print("Welcome to the Skunk Game \n");
+		println("Welcome to the Game of SKUNK");
 
-		Turn turn = new Turn(playerOne,new RollDie());
 		while (!game.isOver())
 		{
-			printScore();
-			playOneRound(game);
+			playOneRound();
+		}
+		printScores();
+		println("Game over! The winner is " + game.getWinner().getName());
+	}
 
-			String line = inputValue.nextLine();
+	private static void playOneRound()
+	{
+		while (!game.currentTurn().isOver())
+		{
+			printScores();
+			println("\nIt is " + game.currentPlayer().getName() + "'s turn");
+			println("This turn's score is " + game.currentTurn().getScore() );
+			println("Press enter to roll, q to end turn");
+			String line = keyboard.nextLine();
+			
 			if (line.startsWith("q"))
 			{
-				game.EndTurn();
-			}
-
-			else
+				game.bankAndEndTurn();
+			} else
 			{
-				game.roll();
+				int roll = game.roll();
+				println("You rolled a " + roll );
 			}
-
-			printScore();
 		}
-
-		println("Game over! The winner is " + game.getWinner().getName());
-
+		if (!game.isOver())
+		{
+			game.startNextTurn();
+		}
 	}
 
-	private static void playOneRound(PlayGame game)
+	private static void printScores()
 	{
-		println("It is " + game.CurrentPlayer().getName() + "'s turn\n");
-		println("This turn's score is " + game.currentTurn().getScore() + "\n");
-		println("Press enter to roll, q to end turn\n");
-	}
-
-	private static void printScore()
-	{
-		println(playerOne.getName() + "'score is " + playerOne.getScore() + "\n");
-		println(playerTwo.getName() + "'score is " + playerTwo.getScore() + "\n\n");
+		println(playerOne.getName() + "'s score is " + playerOne.getScore());
+		println(playerTwo.getName() + "'s score is " + playerTwo.getScore());
 	}
 
 	private static void println(String s)
 	{
-		System.out.print(s);
+		System.out.println(s);
 	}
 
 }
