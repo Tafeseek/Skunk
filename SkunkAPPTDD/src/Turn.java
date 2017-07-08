@@ -1,4 +1,4 @@
-public final class Turn
+public class Turn
 {
 
 	private static final int SKUNK_ROLL = 1;
@@ -17,6 +17,13 @@ public final class Turn
 	{
 		return score;
 	}
+	
+	/*Simulate one turn of the game, making up to rollsPerTurn rolls of 
+	 * the dice, returning the new point total. When the total number of
+	 *points exceeds 100, or we roll a 1 on either die, the turn ends
+	 * without accumulating any points.  If we roll snake eyes, the point 
+	 * total goes back to zero. 
+    */
 
 	public int roll()
 	{

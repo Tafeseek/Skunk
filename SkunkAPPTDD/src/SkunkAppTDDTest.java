@@ -10,14 +10,14 @@ public class SkunkAppTDDTest
 
 		private Player playerOne;
 		private Player playerTwo;
-		private PlayGame game;
+		private GameController game;
 
 		@Before
 		public void setUp()
 		{
 			playerOne = new Player("Bonnie");
 			playerTwo = new Player("Clyde");
-			game = new PlayGame(playerOne, playerTwo);
+			game = new GameController(playerOne, playerTwo);
 		}
 
 		@Test

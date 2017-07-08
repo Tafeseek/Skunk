@@ -1,16 +1,16 @@
 
-public class PlayGame
+public class GameController
 {
 	private static final Die DIE = new RollDie();
 	private static final int POINTS_TO_WIN = 100;
 
-	private final Player playerOne;
-	private final Player playerTwo;
+	private Player playerOne;
+	private Player playerTwo;
 	private Player winner;
 	private boolean isOver = false;
 	private Turn turn;
 
-	public PlayGame(Player playerOne, Player playerTwo)
+	public GameController(Player playerOne, Player playerTwo)
 	{
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
