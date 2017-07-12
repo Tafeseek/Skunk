@@ -9,4 +9,6 @@ public class RollDie implements Die
 	{
 		return RANDOM.nextInt(6) + 1;
 	}
+	
+	
 }

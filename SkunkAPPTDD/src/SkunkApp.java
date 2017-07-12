@@ -20,20 +20,50 @@ import java.util.Scanner;
 public class SkunkApp
 {
 
-	private static Player playerOne = new Player("TAFESSE");
-	private static Player playerTwo = new Player("ERIC");
-	private static GameController game = new GameController(playerOne, playerTwo);
+	private static Player playerOne ;//= new Player("TAFESSE");
+	private static Player playerTwo ;//= new Player("ERIC");
+	private static GameController game;// = new GameController(playerOne, playerTwo);
 	private static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args)
 	{
+		
+		displayPlayersInfo();
 
 		run();
 	}
 
+	private static void displayPlayersInfo()
+	{
+		println("*****************************************");
+		println("Welcome to the Skunk Game");
+
+		System.out.print("Enter Two players name to start\n");
+		println("*****************************************\n");
+		//int numOfPlayers = Integer.parseInt(keyboard.nextLine());
+	    
+		//Create a string array to store the names of your players
+		String arrayOfNames[] = new String[2];
+		for (int i = 0; i < arrayOfNames.length; i++) {
+			System.out.print("Enter the name of players " + (i+1) + " : ");
+		        arrayOfNames[i] = keyboard.nextLine();
+		}
+
+	playerOne = new Player(arrayOfNames[0]);
+    playerTwo = new Player(arrayOfNames[1]);
+    game = new GameController(playerOne, playerTwo);
+	}
+
 	private static void run()
 	{
-		println("Welcome to the Game of SKUNK");
+		System.out.println("");
+//		System.out.println("Rules: \n\nroll - If the player rolls a \n\n1: the player "
+//				+ "scores nothing and it becomes the opponent's turn. \n2 - 6: the number "
+//				+ "is added to the player's turn total and the player's turn continues. "
+//				+ "\n\nhold - pr "
+//				+ "becomes the opponent's turn");
+
+		System.out.print("\nPress [ENTER] to roll...\n");
 
 		while (!game.isOver())
 		{
@@ -50,7 +80,7 @@ public class SkunkApp
 			printScores();
 			println("\nIt is " + game.currentPlayer().getName() + "'s turn");
 			println("This turn's score is " + game.currentTurn().getScore());
-			println("Press enter to roll, h to hold");
+			println("Press enter to roll, and Press h to hold");
 			String line = keyboard.nextLine();
 
 			if (line.startsWith("h") || game.currentTurn().getScore() >= 100)
@@ -59,7 +89,8 @@ public class SkunkApp
 			} else
 			{
 				int roll = game.roll();
-				println("You rolled a " + roll);
+				
+			    println("your rolled : " + game.currentTurn().toString() + "\n current score:= "+ roll);
 			}
 		}
 		if (!game.isOver())

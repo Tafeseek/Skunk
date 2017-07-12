@@ -1,8 +1,8 @@
 
 public class GameController
 {
-	private static final Die DIE = new RollDie();
-	private static final int POINTS_TO_WIN = 100;
+	private static  Die DIE = new RollDie();
+	private static  int POINTS_TO_WIN = 100;
 
 	private Player playerOne;
 	private Player playerTwo;
@@ -14,7 +14,7 @@ public class GameController
 	{
 		this.playerOne = playerOne;
 		this.playerTwo = playerTwo;
-		this.turn = new Turn(playerOne, DIE);
+		this.turn = new Turn(playerOne, DIE,DIE);
 	}
 
 	public Player currentPlayer()
@@ -34,7 +34,7 @@ public class GameController
 
 	public void startNextTurn()
 	{
-		turn = new Turn(nextPlayer(), DIE);
+		turn = new Turn(nextPlayer(), DIE,DIE);
 	}
 
 	private Player nextPlayer()
@@ -67,4 +67,7 @@ public class GameController
 	{
 		return turn;
 	}
+	
+	
+	
 }

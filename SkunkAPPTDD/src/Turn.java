@@ -1,16 +1,20 @@
 public class Turn
 {
 
-	private static final int SKUNK_ROLL = 1;
+	private static  int SKUNK_ROLL = 1;
 	private Player player;
-	private Die die;
+	private Die die1;
+    private Die die2;
 	private int score = 0;
 	private boolean isOver = false;
+	private int rol1 ;
+	private int rol2;
 
-	public Turn(Player player, Die die)
+	public Turn(Player player, Die die1, Die die2)
 	{
 		this.player = player;
-		this.die = die;
+		this.die1 = die1;
+		this.die2= die2;
 	}
 
 	public int getScore()
@@ -27,21 +31,30 @@ public class Turn
 
 	public int roll()
 	{
-		int roll = die.roll();
-		if (roll == SKUNK_ROLL)
+		rol1 = die1.roll();
+		rol2 = die2.roll();
+		
+		if (rol1 == SKUNK_ROLL && rol2 ==SKUNK_ROLL)
 		{
 			score = 0;
 			isOver = true;
-		} else
+		} 
+		
+		else if(rol1 == SKUNK_ROLL ||rol2 ==SKUNK_ROLL)
 		{
-			score += roll;
+			isOver = true;
+			
 		}
-		return roll;
+		else
+		{
+			score += rol1+rol2;
+		}
+		return score;
 	}
 
 	void setScore(int score)
 	{
-		this.score = score;
+	     this.score = score;
 	}
 
 	public void end()
@@ -59,4 +72,11 @@ public class Turn
 	{
 		return isOver;
 	}
+
+	@Override
+	public String toString()
+	{
+		return "[die1=" + rol1 + ", die2=" + rol2 + "]";
+	}
+	
 }
