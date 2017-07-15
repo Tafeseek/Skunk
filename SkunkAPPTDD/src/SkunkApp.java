@@ -20,9 +20,9 @@ import java.util.Scanner;
 public class SkunkApp
 {
 
-	private static Player playerOne ;//= new Player("TAFESSE");
-	private static Player playerTwo ;//= new Player("ERIC");
-	private static GameController game;// = new GameController(playerOne, playerTwo);
+	private static Player playerOne ;
+	private static Player playerTwo ;
+	private static GameController game;
 	private static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args)
@@ -35,33 +35,34 @@ public class SkunkApp
 
 	private static void displayPlayersInfo()
 	{
-		println("*****************************************");
+		println("********************************************************************************");
 		println("Welcome to the Skunk Game");
-
+		println("Game Rules : \n" + "1. Press [Enter] to roll\n" + 
+		       "2.press [h] to to pass the turn to an oponent\n"
+		+"3. if players score>=100  wait his turn and press [h] to be a winner \n");
+		
+		println("*******************************************************************************\n");
+		
 		System.out.print("Enter Two players name to start\n");
-		println("*****************************************\n");
+		
 		//int numOfPlayers = Integer.parseInt(keyboard.nextLine());
 	    
 		//Create a string array to store the names of your players
-		String arrayOfNames[] = new String[2];
-		for (int i = 0; i < arrayOfNames.length; i++) {
-			System.out.print("Enter the name of players " + (i+1) + " : ");
-		        arrayOfNames[i] = keyboard.nextLine();
+		String playerName[] = new String[2];
+		for (int i = 0; i < playerName.length; i++) {
+			
+			System.out.print("*  Enter the name of players " + (i+1) + " : " + "\n");
+		        playerName[i] = keyboard.nextLine();
 		}
 
-	playerOne = new Player(arrayOfNames[0]);
-    playerTwo = new Player(arrayOfNames[1]);
+	playerOne = new Player(playerName[0]);
+    playerTwo = new Player(playerName[1]);
     game = new GameController(playerOne, playerTwo);
 	}
 
 	private static void run()
 	{
-		System.out.println("");
-//		System.out.println("Rules: \n\nroll - If the player rolls a \n\n1: the player "
-//				+ "scores nothing and it becomes the opponent's turn. \n2 - 6: the number "
-//				+ "is added to the player's turn total and the player's turn continues. "
-//				+ "\n\nhold - pr "
-//				+ "becomes the opponent's turn");
+		System.out.println("");	
 
 		System.out.print("\nPress [ENTER] to roll...\n");
 
@@ -80,7 +81,7 @@ public class SkunkApp
 			printScores();
 			println("\nIt is " + game.currentPlayer().getName() + "'s turn");
 			println("This turn's score is " + game.currentTurn().getScore());
-			println("Press enter to roll, and Press h to hold");
+			println("Press [Enter] to roll, and Press [h] to hold and pass the roll to an oponent ");
 			String line = keyboard.nextLine();
 
 			if (line.startsWith("h") || game.currentTurn().getScore() >= 100)
@@ -90,7 +91,7 @@ public class SkunkApp
 			{
 				int roll = game.roll();
 				
-			    println("your rolled : " + game.currentTurn().toString() + "\n current score:= "+ roll);
+			    println("your rolled : " + game.currentTurn().toString() + "\ncurrent score is := "+ roll);
 			}
 		}
 		if (!game.isOver())

@@ -31,23 +31,26 @@ public class Turn
 
 	public int roll()
 	{
+		int result = 0;
 		rol1 = die1.roll();
 		rol2 = die2.roll();
 		
+		result = rol1+ rol2;
 		if (rol1 == SKUNK_ROLL && rol2 ==SKUNK_ROLL)
 		{
-			score = 0;
-			isOver = true;
+			score=0;
+			end();
 		} 
 		
 		else if(rol1 == SKUNK_ROLL ||rol2 ==SKUNK_ROLL)
 		{
-			isOver = true;
-			
+			end();
+		  
 		}
 		else
 		{
-			score += rol1+rol2;
+			
+			score += result;
 		}
 		return score;
 	}
