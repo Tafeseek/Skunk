@@ -20,14 +20,14 @@ import java.util.Scanner;
 public class SkunkApp
 {
 
-	private static Player playerOne ;
-	private static Player playerTwo ;
+	private static Player playerOne;
+	private static Player playerTwo;
 	private static GameController game;
 	private static Scanner keyboard = new Scanner(System.in);
 
 	public static void main(String[] args)
 	{
-		
+
 		displayPlayersInfo();
 
 		run();
@@ -37,32 +37,37 @@ public class SkunkApp
 	{
 		println("********************************************************************************");
 		println("Welcome to the Skunk Game");
-		println("Game Rules : \n" + "1. Press [Enter] to roll\n" + 
-		       "2.press [h] to to pass the turn to an oponent\n"
-		+"3. if players score>=100  wait his turn and press [h] to be a winner \n");
+		println("Game Rules : \n" + 
 		
+		          "1.Press [Enter] to roll\n"+
+				  "2.press [h] to to pass the turn to an oponent\n"
+				+ "3.if players score>=100 press [h] to end the round game and declare a winner \n");
+		
+		
+
 		println("*******************************************************************************\n");
-		
+
 		System.out.print("Enter Two players name to start\n");
-		
-		//int numOfPlayers = Integer.parseInt(keyboard.nextLine());
-	    
-		//Create a string array to store the names of your players
+
+		// int numOfPlayers = Integer.parseInt(keyboard.nextLine());
+
+		// Create a string array to store the names of your players
 		String playerName[] = new String[2];
-		for (int i = 0; i < playerName.length; i++) {
-			
-			System.out.print("*  Enter the name of players " + (i+1) + " : " + "\n");
-		        playerName[i] = keyboard.nextLine();
+		for (int i = 0; i < playerName.length; i++)
+		{
+
+			System.out.print("*  Enter the name of players " + (i + 1) + " : " + "\n");
+			playerName[i] = keyboard.nextLine();
 		}
 
-	playerOne = new Player(playerName[0]);
-    playerTwo = new Player(playerName[1]);
-    game = new GameController(playerOne, playerTwo);
+		playerOne = new Player(playerName[0]);
+		playerTwo = new Player(playerName[1]);
+		game = new GameController(playerOne, playerTwo);
 	}
 
 	private static void run()
 	{
-		System.out.println("");	
+		System.out.println("");
 
 		System.out.print("\nPress [ENTER] to roll...\n");
 
@@ -90,8 +95,8 @@ public class SkunkApp
 			} else
 			{
 				int roll = game.roll();
-				
-			    println("your rolled : " + game.currentTurn().toString() + "\ncurrent score is := "+ roll);
+
+				println("your rolled : " + game.currentTurn().toString() + "\ncurrent score is := " + roll);
 			}
 		}
 		if (!game.isOver())
